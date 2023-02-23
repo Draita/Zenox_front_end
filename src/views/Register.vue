@@ -61,7 +61,7 @@ export default {
                     const status = response.status;
 
                     if (status == 201) {
-                        this.$router.push('Home')
+                        this.$router.push('/')
                     }
 
                 }).catch(function (error) {
