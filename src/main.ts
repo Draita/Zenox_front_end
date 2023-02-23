@@ -9,11 +9,9 @@ import DigitalArt from './views/DigitalArt.vue'
 import Login from './views/login.vue'
 import CheckLogin from './views/CheckIfLogin.vue'
 import Register from './views/Register.vue'
+import Profile from './views/Profile.vue'
 
-
-
-
-
+import '@/axios'
 
 
 
@@ -32,7 +30,9 @@ const router = createRouter({
         {path: '/menu', name: 'menu', component: Menu},
         {path: '/about-me', name: 'AboutMe', component: AboutMe},
         {path: '/digital-art', name: 'DigalArt', component: DigitalArt},
-        {path: '/register', name: 'Register', component: Register}
+        {path: '/register', name: 'Register', component: Register},
+        {path: '/Profile', name: 'Profile', component: Profile}
+
 
 
 
