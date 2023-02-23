@@ -1,5 +1,10 @@
+
 <script>
+
+
 import axios from "axios";
+
+
 let axiosConfig = {
     headers: {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -9,7 +14,10 @@ let axiosConfig = {
     }
 };
 export default {
-    name: "PostPage",
+    name: "Login",
+    created() {
+        axios.get('/logout');
+    },
     data() {
         return {
             users: [],
@@ -24,25 +32,25 @@ export default {
     methods: {
         handleSubmit() {
 
-            axios.post("http://localhost:3000/login", {
+
+            axios.post("/login", {
                 email: this.email,
                 password: this.password
             })
-                .then((response) => {
+                .then( (response) => {
                     const status = response.status;
 
+
                     if (status == 200) {
-                        this.$router.push('Home')
+                        this.$router.push('/')
+
                     }
 
-                }).catch(function (error){
+                }).catch(function (error) {
 
-                    //add later that it it displays the error
-                        console.log("error")
-                    });
-
-
-
+                    //TODO: add later that it it displays the error
+                    console.log("error")
+                });
         },
     },
 };
@@ -72,7 +80,9 @@ export default {
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit">
                     Log in
-            </button>
-        </div>
-    </form>
-</div></template>
+                </button>
+
+            </div>
+        </form>
+    </div>
+</template>
