@@ -15,6 +15,7 @@ import '@/axios'
 
 
 
+
 // add this
 import './index.css'
 
@@ -23,18 +24,14 @@ const router = createRouter({
     history: createWebHistory(),
 
     routes: [
-        {path: '/', name: 'home', component: Home},
+        {path: '/home', name: 'home', component: Home},
         {path: '/login', name: 'login', component: Login},
-        {path: '/checkLogin', name: 'checkLogin', component: CheckLogin},
-
+        {path: '/', name: 'checkLogin', component: CheckLogin},
         {path: '/menu', name: 'menu', component: Menu},
         {path: '/about-me', name: 'AboutMe', component: AboutMe},
         {path: '/digital-art', name: 'DigalArt', component: DigitalArt},
         {path: '/register', name: 'Register', component: Register},
         {path: '/Profile', name: 'Profile', component: Profile}
-
-
-
 
     ]
 
