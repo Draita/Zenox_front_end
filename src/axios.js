@@ -1,3 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = 'http://localhost:3000';
+import config from "@/config";
+
+axios.defaults.baseURL = config.apiUrl;
 axios.defaults.withCredentials = true
