@@ -23,11 +23,13 @@
   </template>
 
   <script>
+import axios from "axios";
+
   export default {
     data() {
       return {
         user: {
-          username: "John Doe",
+          username: "",
           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           profilePicture: "https://via.placeholder.com/150",
           messages: [
@@ -45,5 +47,16 @@
         },
       };
     },
+    mounted(){
+      const name = this.$route.query.user
+      axios.get('/profile/get/'+ name).then((response) => {
+        const profileData = response.data
+       console.log( )
+        this.user.username = name
+        this.user.description = profileData.description
+      });
+
+
+    }
   };
   </script>
