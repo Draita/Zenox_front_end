@@ -10,6 +10,11 @@ import Login from './views/login.vue'
 import CheckLogin from './views/CheckIfLogin.vue'
 import Register from './views/Register.vue'
 import Profile from './views/Profile.vue'
+import Feed from './views/Feed.vue'
+
+
+
+
 
 import '@/axios'
 
@@ -31,7 +36,10 @@ const router = createRouter({
         {path: '/about-me', name: 'AboutMe', component: AboutMe},
         {path: '/digital-art', name: 'DigalArt', component: DigitalArt},
         {path: '/register', name: 'Register', component: Register},
-        {path: '/Profile', name: 'Profile', component: Profile}
+        {path: '/Profile', name: 'Profile', component: Profile},
+        {path: '/Feed', name: 'Feed', component: Feed},
+
+
 
     ]
 
