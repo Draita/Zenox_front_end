@@ -55,9 +55,11 @@ export default {
 
             axios.post("http://localhost:3000/register", {
                 email: this.email,
-                password: this.password
+                password: this.password,
+                username: this.username
             })
                 .then((response) => {
+                    console.log("registered")
                     const status = response.status;
 
                     if (status == 201) {
