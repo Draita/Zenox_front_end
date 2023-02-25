@@ -1,50 +1,23 @@
 <template>
-  <!-- Top bar -->
-  <div class="bg-gray-900 px-4 py-2 flex justify-between items-center">
-    <div class="flex items-center">
-      <img src="/logo.png" class="h-8 mr-2">
-      <h1 class="text-white font-bold text-lg">Zenox</h1>
-    </div>
-    <div class="hidden md:flex items-center">
-      <button class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-full mr-2"
-        @click="$router.push('/register')">Register</button>
-      <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-full"
-        @click="$router.push('/login')">Login</button>
-    </div>
-    <div class="md:hidden">
-      <button class="text-white hover:text-gray-300">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
+  <div class="flex flex-col md:flex-row h-screen">
+    <!-- Sidebar Component -->
+    <main-sidebar />
 
-  <!-- Main content -->
-  <div class="container mx-auto py-8">
-    <div class="flex flex-wrap -mx-4">
-      <!-- Card 1 -->
-      <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-        <div class="bg-white rounded-lg shadow-lg">
-          <img src="/card-image-1.jpg" class="w-full h-48 object-cover rounded-t-lg">
-          <div class="p-4">
-            <h2 class="text-gray-800 text-lg font-semibold mb-2">Card Title 1</h2>
-            <p class="text-gray-700 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vulputate, ex
-              eu placerat semper, lacus metus mattis ex, vitae consequat turpis nisl id arcu. Proin eu ultricies orci.
-            </p>
-          </div>
-        </div>
+    <!-- Main Content -->
+    <div class="flex flex-col flex-1 h-full">
+      <!-- Text Box -->
+      <div class="bg-white border rounded-lg p-4 mx-4 my-8 md:mx-16 md:my-16">
+        <h2 class="text-lg font-semibold mb-2">Write a message:</h2>
+        <message-box />
       </div>
 
-      <!-- Card 2 -->
-      <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-        <div class="bg-white rounded-lg shadow-lg">
-          <img src="/card-image-2.jpg" class="w-full h-48 object-cover rounded-t-lg">
-          <div class="p-4">
-            <h2 class="text-gray-800 text-lg font-semibold mb-2">Card Title 2</h2>
-            <p class="text-gray-700 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vulputate, ex
-              eu placerat semper, lacus metus mattis ex, vitae consequat turpis nisl id arcu. Proin eu ultricies orci.
-            </p>
+      <!-- Example Messages -->
+      <div class="flex flex-col flex-1 mx-4 md:mx-16">
+        <h2 class="text-lg font-semibold mb-4">Example Messages</h2>
+        <div v-for="message in exampleMessages" :key="message.id" class="bg-white rounded-lg shadow-lg mb-4">
+          <div class="px-4 py-2">
+            <p class="text-gray-800 text-base">{{ message.content }}</p>
+            <p class="text-gray-500 text-sm mt-2">{{ message.username }} - {{ message.timestamp }}</p>
           </div>
         </div>
       </div>
@@ -52,3 +25,44 @@
   </div>
 </template>
 
+<script>
+import MainSidebar from '@/components/MainSidebar.vue';
+import MessageBox from '@/components/MessageBox.vue';
+
+export default {
+  components: {
+    MainSidebar,
+    MessageBox
+  },
+  data() {
+    return {
+      exampleMessages: [
+        {
+          id: 1,
+          username: 'John',
+          content: 'Hey, how are you?',
+          timestamp: '10:30 AM'
+        },
+        {
+          id: 2,
+          username: 'Jane',
+          content: 'I\'m doing great, thanks for asking! How about you?',
+          timestamp: '10:45 AM'
+        }
+      ]
+    };
+  }
+};
+</script>
+
+<style scoped>
+/* Add your Tailwind styles here */
+@media(min-width: 768px) {
+  .flex-row {
+    flex-direction: row;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+}
+</style>
