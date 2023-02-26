@@ -1,12 +1,13 @@
 <template>
     <div class="container-fluid  flex  flex-row items-center">
         <main-sidebar />
-        <div class="flex flex-col md:flex-row h-screen flex-1">
+        <div class="flex flex-col md:flex-row h-screen flex-1 overflow-scroll">
             <div class="profile min-w-full flex flex-col items-center">
-                <message-box class="min-w-full" />
+                <!-- <message-box class="min-w-full" /> -->
                 <div class="flex flex-col flex-1 mx-4 md:mx-16">
-                    <h2 class="text-lg font-semibold mb-4">Example Messages</h2>
-                    <message v-for="message in messages" :key="message.id" :message="message" :url="this.Url" />
+                    <h2 class="text-lg font-semibold mb-4">Posts from users you follow</h2>
+                    <messages-list :messages="messages">
+                    </messages-list>
                 </div>
             </div>
         </div>
@@ -17,9 +18,10 @@
 <script>
 import MainSidebar from "@/components/MainSidebar.vue";
 import MessageBox from "@/components/MessageBox.vue";
-import Message from "@/components/Message.vue";
+import messagesList from "@/components/messagesList.vue";
+
 import axios from "axios";
-import config from "@/config";
+
 
 
 
@@ -27,12 +29,12 @@ export default {
     components: {
         MainSidebar,
         MessageBox,
-        Message
+        messagesList
     },
     data() {
         return {
             messages: [],
-            Url: config.apiUrl,
+
         };
     },
     mounted() {
@@ -45,25 +47,5 @@ export default {
                 console.log(error);
             });
     },
-    methods: {
-        getTimeElapsed(timestamp) {
-            const now = new Date();
-            const posted = new Date(timestamp);
-            const elapsed = now.getTime() - posted.getTime();
-
-            const minutes = Math.floor(elapsed / 60000);
-            if (minutes < 60) {
-                return `${minutes} minutes ago`;
-            }
-
-            const hours = Math.floor(minutes / 60);
-            if (hours < 24) {
-                return `${hours} hours ago`;
-            }
-
-            const days = Math.floor(hours / 24);
-            return `${days} days ago`;
-        },
-    }
-};
+}
 </script>
