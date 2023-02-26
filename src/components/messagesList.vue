@@ -5,7 +5,7 @@
 
 <script>
 import config from "@/config";
-import Message from "@/components/Message.vue";
+import Message from "@/components/message.vue";
 import axios from "axios";
 
 
