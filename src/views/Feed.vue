@@ -19,8 +19,8 @@
 
 
 <script>
-import MainSidebar from "@/components/MainSidebar.vue";
-import MessageBox from "@/components/MessageBox.vue";
+import MainSidebar from "@/components/mainSidebar.vue";
+import MessageBox from "@/components/messageBox.vue";
 import messagesList from "@/components/messagesList.vue";
 
 import axios from "axios";
