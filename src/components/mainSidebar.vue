@@ -100,7 +100,7 @@ export default {
           if (response.status == 200) {
             this.$router.push('/profile/?user=' + response.data).then(() => {
               console.log('Updated route', this.$route)
-              // process the updated route params
+              this.$emit('refreshProfile')
             })
 
 
@@ -112,7 +112,8 @@ export default {
       axios.get('/logout').then((respose) => {
         this.$router.push('/')
       });
-    }
+    },
+
 
   }
 };
