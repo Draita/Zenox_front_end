@@ -53,7 +53,7 @@ export default {
     methods: {
         handleSubmit() {
 
-            axios.post("http://localhost:3000/register", {
+            axios.post("/register", {
                 email: this.email,
                 password: this.password,
                 username: this.username
