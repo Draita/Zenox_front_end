@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid flex  lex-row items-start  ">
-    <main-sidebar class="w-10 md:w-32 lg:w-fit"></main-sidebar>
+    <main-sidebar @refreshProfile = this.refreshProfile() class="w-10 md:w-32 lg:w-fit"></main-sidebar>
 
     <div class="w-full  h-screen pl-3 md:pl-24 lg:pl-64 overflow-scroll">
       <div class="profile h-full w-[640px]">
@@ -33,7 +33,10 @@
         <message-box  v-show="editable" @messageSend="this.getMessages(this.user.username)" class="w-full" />
         <div class="flex flex-col flex-1 mx-4 md:mx-16">
           <h2 class="text-lg font-semibold mb-4">Posts</h2>
-          <messages-list :editable = "editable" :messages="messages">
+
+          <!-- TODO: change that the logic for editing messages is configured within the message it self
+          so that users can still delete their messages in discovery for example -->
+          <messages-list :editable = "editable" :allowVistingProfile = false :messages="messages">
           </messages-list>
         </div>
 
@@ -96,6 +99,8 @@ export default {
       isModalVisible: false,
     };
   },
+
+
   mounted() {
 
 
@@ -117,7 +122,15 @@ export default {
       this.isModalVisible = false;
     },
 
+      //used when profile is selected on the main sidebar when already visitng a profile
+      //otherwise the profile won't update
+    refreshProfile(){
+      const name = this.$route.query.user
+      this.getMessages(name)
+      this.updateProfile(name)
+    },
     updateProfile(name) {
+      console.log("refreshProfile")
       axios.get('/profile/get/' + name).then((response) => {
       const profileData = response.data;
       this.user.username = name;
