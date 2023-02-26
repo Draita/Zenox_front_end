@@ -2,7 +2,8 @@
 
 
     <div class="container-fluid  flex  flex-row items-center">
-        <main-sidebar />
+        <main-sidebar  />
+
         <div class="flex flex-col md:flex-row h-screen flex-1 overflow-scroll">
             <div class="profile min-w-full flex flex-col items-center">
                 <!-- <message-box class="min-w-full" /> -->
