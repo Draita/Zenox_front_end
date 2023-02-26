@@ -11,9 +11,9 @@ import Register from './views/Register.vue'
 import Profile from './views/Profile.vue'
 import Discover from './views/Discover.vue'
 import Dev from './views/Dev.vue'
-import Feed from './views/Feed.vue'
 
 import '@/axios'
+import Feed from './views/Feed.vue'
 
 
 
