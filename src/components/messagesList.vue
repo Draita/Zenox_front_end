@@ -1,6 +1,6 @@
 <template>
     <message v-for="message in messages" :message="message" :editable="editable" :key="message._id"
-        :username="this.username" :url="this.Url" />
+        :username="this.username" :allowVistingProfile = "this.allowVistingProfile" :url="this.Url" />
 </template>
 
 <script>
@@ -22,6 +22,10 @@ export default {
         editable:{
             type: Boolean,
             default: false
+        },
+        allowVistingProfile:{
+            type: Boolean,
+            default: true
         }
     },
 
