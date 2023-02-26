@@ -28,6 +28,7 @@ export default {
 </script>
 
 <template >
+
   <div v-if="showHome" class="container-fluid">
   <!-- Top bar -->
   <div  class="bg-gray-900 px-4 py-2 flex justify-between items-center">

@@ -15,6 +15,7 @@
 
 </template>
 
+
 <style>
 .background {
     background: url("@/assets/topbar.jpg") top left;

@@ -1,5 +1,6 @@
 <template>
     <div class="container-fluid">
+
         <Topbar></Topbar>
 
         <div class="h-fit  wood-bg flex justify-center">

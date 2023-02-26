@@ -1,4 +1,5 @@
 <template>
+
   <div class="flex flex-col md:flex-row h-screen">
     <!-- Sidebar Component -->
     <main-sidebar />

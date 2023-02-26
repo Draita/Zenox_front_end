@@ -1,4 +1,5 @@
 <template>
+
     <div class="bg-white rounded-lg shadow-lg mb-4">
       <div @click = "$router.push('profile/?user='+message.user.username)" class="px-4 py-2 flex items-center">
         <img class="w-16 h-16 rounded-full object-cover mb-4 mr-4"
