@@ -5,6 +5,13 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [vue(),webfontDownload(),],
+  server:{
+    hmr: { overlay: false },
+    watch:{
+      usePolling: false,
+
+    }
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
