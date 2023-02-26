@@ -12,8 +12,8 @@
       </button>
     </div>
 
-    <div class="px-4 py-2 flex items-center">
-      <img  @click="$router.push('profile/?user=' + aMessage.user.username)" class="w-16 h-16 rounded-full object-cover mb-4 mr-4"
+    <div @click="this.visitProfile(aMessage.user.username)" class="px-4 py-2  w-fit  flex items-center">
+      <img class="w-16 h-16 rounded-full object-cover mb-4 mr-4"
         :src="this.url + '/profile/profile_picture/' + aMessage.user.username"
         alt="Profile picture of {{ aMessage.user.username }}" />
       <div>
@@ -62,7 +62,11 @@ export default {
     editable:{
       type:Boolean,
       required: true
-    }
+    },
+    allowVistingProfile:{
+            type: Boolean,
+            required: true
+        }
   },
   data() {
     return {
@@ -84,7 +88,13 @@ export default {
       }
     } catch (error) {
     }
-    this.liked = this.message.liked
+
+    //set like to server input
+    try{
+      this.liked = this.message.liked
+    } catch{
+      this.liked = false;
+    }
 
 
 
@@ -126,6 +136,11 @@ export default {
         .then(response =>{
           this.show= false;
         })
+
+
+    },
+    visitProfile(name){
+      if(this.allowVistingProfile){   this.$router.push('profile/?user=' + name)}
 
 
     }
