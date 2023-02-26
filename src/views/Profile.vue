@@ -53,7 +53,7 @@
 <script>
 import axios from "axios";
 import config from "@/config";
-import ChangeProfile from "@/components/ChangeProfile.vue"
+import ChangeProfile from "@/components/changeProfile.vue"
 import MessageBox from '@/components/MessageBox.vue';
 import MainSidebar from "@/components/mainSidebar.vue";
 import messagesList from "@/components/messagesList.vue";
