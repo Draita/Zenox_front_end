@@ -31,7 +31,7 @@
 <script>
 import MainSidebar from "@/components/mainSidebar.vue";
 import MessageBox from "@/components/messageBox.vue";
-import Message from "@/components/Message.vue";
+import Message from "@/components/message.vue";
 import messagesList from "@/components/messagesList.vue";
 
 import axios from "axios";
