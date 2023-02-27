@@ -16,7 +16,7 @@ let axiosConfig = {
 };
 export default {
     name: "Login",
-    created() {
+    mounted() {
         axios.get('/logout');
     },
     data() {
