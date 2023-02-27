@@ -1,16 +1,19 @@
 <template>
 
-  <div class="container-fluid flex  lex-row items-start  ">
-    <main-sidebar @refreshProfile=this.refreshProfile() class="w-10 md:w-32 lg:w-fit"></main-sidebar>
+  <div class="container-fluid flex  lex-row items-start">
 
-    <div class="w-full  h-screen pl-3 md:pl-24 lg:pl-64 overflow-scroll">
-      <div class="profile h-full w-[640px]">
+    <main-sidebar @refreshProfile=this.refreshProfile() class="bg-slate-800 "></main-sidebar>
+
+    <div class="w-full h-screen pl-2 md:pl-24 lg:pl-64 overflow-scroll">
+      <div class="profile h-full w-full lg:w-[640px]">
         <div class="h-2/5 ">
-          <div class="banner h-2/5 "></div>
+          <div class="banner h-2/5 ">
+            <!-- <img class = "h-[100px]" src="@/assets/hand.jpg"> -->
+          </div>
           <div class="grid   h-10 w-full items-stretch">
             <div class="">
               <div class="image -mt-16 pl-4">
-                <img class="w-32 h-32 rounded-full object-cover mb-4" :src="user.profilePicture" :alt="user.username" />
+                <img class="h-28 w-28 lg:w-32 lg:h-32  rounded-full object-cover mb-4" :src="user.profilePicture" :alt="user.username" />
               </div>
               <div class="pl-5 text-3xl font-medium mb-2 ">{{ user.username }}</div>
               <p class="text-sm text-gray-500 mb-4">{{ user.description }}</p>
@@ -19,20 +22,20 @@
 
             <!-- TODO: fix edit button so that it is higher. -->
             <div class="place-self-end">
-              <button v-if="editable" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+              <button v-if="editable" class="bg-blue-500 w-[100px] h-8 hover:bg-blue-700 text-white font-bold rounded-full"
                 @click="showModal">Edit Profile</button>
 
               <div v-else class="div">
                 <button v-if="isFollowing" @click="unfollow"
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Unfollow</button>
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full">Unfollow</button>
                 <button v-else @click="follow"
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Follow</button>
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full">Follow</button>
               </div>
             </div>
           </div>
         </div>
-        <message-box v-show="editable" @messageSend="sendMessage" class="w-full" />
-        <div class="flex flex-col flex-1 mx-4 md:mx-16">
+        <message-box v-show="editable" @messageSend="sendMessage" class="w-[320px] pt-5" />
+        <div class="flex flex-col flex-1  md:mx-16 pt-5 w-[320px]">
           <h2 class="text-lg font-semibold mb-4">Posts</h2>
 
           <!-- TODO: change that the logic for editing messages is configured within the message it self

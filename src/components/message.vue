@@ -24,7 +24,7 @@
     <div class="px-4">
       <img v-if="message.media" class="w-full rounded-lg shadow-lg mb-4" :src="this.apiUrl + '/media/' + message.media"
         alt="Media attached to the message" />
-      <p class="text-gray-800 text-base">{{ aMessage.content }}</p>
+      <p class="text-gray-800 text-base break-all">{{ aMessage.content }}</p>
 
       <div class="bottom grid  grid-cols-2 gap-4 mt-4">
         <div class="flex items-center ">
