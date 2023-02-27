@@ -4,7 +4,7 @@
       <form @submit.prevent="sendMessage" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
           <label class="block text-gray-700 font-bold mb-2" for="message">
-            Message
+           {{header}}
           </label>
           <textarea v-model="message" id="message" name="message"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -33,6 +33,12 @@
 import axios from 'axios';
 
 export default {
+  props: {
+    header: {
+      type: String,
+      default: "Message"
+    },
+  },
   data() {
     return {
       message: '',
@@ -46,24 +52,8 @@ export default {
       formData.append('content', this.message);
       formData.append('location', 'feed');
       formData.append("file", this.file)
-
-
-
-      axios.post('/messages', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then((response) => {
-        this.$emit('messageSend');
-
-
-      }
-      ).catch((error) => {
-          console.error(error);
-        });
-      this.message = '';
-      this.file = null;
-    },
+      this.$emit('messageSend', formData);
+     },
     onFileChange(event) {
       this.file = event.target.files[0];
     },
