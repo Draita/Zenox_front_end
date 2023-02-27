@@ -1,6 +1,7 @@
 <template>
+
   <div class="container-fluid flex  lex-row items-start  ">
-    <main-sidebar @refreshProfile = this.refreshProfile() class="w-10 md:w-32 lg:w-fit"></main-sidebar>
+    <main-sidebar @refreshProfile=this.refreshProfile() class="w-10 md:w-32 lg:w-fit"></main-sidebar>
 
     <div class="w-full  h-screen pl-3 md:pl-24 lg:pl-64 overflow-scroll">
       <div class="profile h-full w-[640px]">
@@ -30,19 +31,20 @@
             </div>
           </div>
         </div>
-        <message-box  v-show="editable" @messageSend="this.getMessages(this.user.username)" class="w-full" />
+        <message-box v-show="editable" @messageSend="sendMessage" class="w-full" />
         <div class="flex flex-col flex-1 mx-4 md:mx-16">
           <h2 class="text-lg font-semibold mb-4">Posts</h2>
 
           <!-- TODO: change that the logic for editing messages is configured within the message it self
           so that users can still delete their messages in discovery for example -->
-          <messages-list :editable = "editable" :allowVistingProfile = false :messages="messages">
+          <messages-list :editable="editable" :allowVistingProfile=false :messages=this.messages>
           </messages-list>
         </div>
 
       </div>
 
     </div>
+
     <change-profile v-if="isModalVisible" @close="hideModal()" @profileUpdated="updateProfile(user.username)" />
 
   </div>
@@ -63,36 +65,29 @@ import message from "@/components/message.vue";
 
 
 
+
+
+
+
 export default {
   components: {
     ChangeProfile,
     MessageBox,
     MainSidebar,
     messagesList,
-    message
+    message,
 
   },
   data() {
     return {
       editable: false,
       isFollowing: false,
+
       messages: [],
       user: {
         username: "",
         description: "",
         profilePicture: "https://via.placeholder.com/150",
-        messages: [
-          {
-            id: 1,
-            content: "Example message 1",
-            timestamp: "2022-02-10 10:00:00",
-          },
-          {
-            id: 2,
-            content: "Example message 2",
-            timestamp: "2022-02-09 14:30:00",
-          },
-        ],
       },
       isModalVisible: false,
     };
@@ -103,7 +98,7 @@ export default {
 
 
     const name = this.$route.query.user;
-
+    this.updateMessages
     //retrieve profile picture
     this.setProfilePicture(name)
     this.checkFollow(name);
@@ -112,6 +107,22 @@ export default {
 
   },
   methods: {
+    sendMessage(e) {
+      console.log(e);
+      axios.post('/messages', e, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then((response) => {
+        //TODO: impliment later that data is returned from endpoint and added to the this.messages
+        // this.messages.unshift(response.data)
+        this.getMessages(this.user.username);
+      }
+      ).catch((error) => {
+        console.error(error);
+      });
+
+    },
     showModal() {
       this.isModalVisible = true;
 
@@ -120,9 +131,9 @@ export default {
       this.isModalVisible = false;
     },
 
-      //used when profile is selected on the main sidebar when already visitng a profile
-      //otherwise the profile won't update
-    refreshProfile(){
+    //used when profile is selected on the main sidebar when already visitng a profile
+    //otherwise the profile won't update
+    refreshProfile() {
       const name = this.$route.query.user
       this.getMessages(name)
       this.updateProfile(name)
@@ -130,12 +141,13 @@ export default {
     updateProfile(name) {
       console.log("refreshProfile")
       axios.get('/profile/get/' + name).then((response) => {
-      const profileData = response.data;
-      this.user.username = name;
-      this.user.description = profileData.description;
+        const profileData = response.data;
+        this.user.username = name;
+        this.user.description = profileData.description;
 
-      this.isCurrentUserLoggedInUser()
-    });
+
+        this.isCurrentUserLoggedInUser()
+      });
 
       this.setProfilePicture(name)
     },
