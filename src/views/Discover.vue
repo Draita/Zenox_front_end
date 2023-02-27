@@ -2,8 +2,8 @@
 
     <div class="container-fluid flex flex-row items-center">
       <main-sidebar />
-      <div class="flex flex-col md:flex-row h-screen flex-1 overflow-scroll">
-        <div class="profile min-w-full flex flex-col items-center">
+      <div class=" flex flex-col w-full md:justify-center md:flex-row h-screen flex-1 overflow-scroll">
+        <div class="profile flex md:w-[600px] flex-col items-center">
           <div class="flex flex-col flex-1 mx-4 md:mx-16">
             <h2 class="text-lg font-semibold mb-4">
               Discover posts from other users

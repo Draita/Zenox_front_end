@@ -27,15 +27,16 @@
 
               <div v-else class="div">
                 <button v-if="isFollowing" @click="unfollow"
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full">Unfollow</button>
+                  class="bg-blue-500 hover:bg-blue-700 w-[100px] h-8 text-white font-bold rounded-full">Unfollow</button>
                 <button v-else @click="follow"
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full">Follow</button>
+                  class="bg-blue-500 hover:bg-blue-700 w-[100px] h-8 text-white font-bold rounded-full">Follow</button>
               </div>
             </div>
           </div>
         </div>
-        <message-box v-show="editable" @messageSend="sendMessage" class="w-[320px] pt-5" />
-        <div class="flex flex-col flex-1  md:mx-16 pt-5 w-[320px]">
+
+        <div class="flex  flex-col flex-1  lg:mx-16 pt-5 w-[320px] md:w-[400px] lg:w-[600px]">
+          <message-box v-show="editable" @messageSend="sendMessage" class="w-full pt-5" />
           <h2 class="text-lg font-semibold mb-4">Posts</h2>
 
           <!-- TODO: change that the logic for editing messages is configured within the message it self
