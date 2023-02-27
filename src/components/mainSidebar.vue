@@ -107,7 +107,8 @@ export default {
         })
     },
     logout() {
-      axios.get('/logout').then((respose) => {
+      axios.get('/logout').then((response) => {
+        console.log(response)
         this.$router.push('/')
       });
     },

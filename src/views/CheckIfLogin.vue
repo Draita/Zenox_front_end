@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen overflow-hidden">
+  <div v-if = "showHome" class="h-screen overflow-hidden">
     <div class="bg-black ">
       <nav class="
               container
