@@ -11,7 +11,6 @@ export default {
 
   mounted() {
 
-
     axios.get('/checklogin')
       .then((response) => {
 
