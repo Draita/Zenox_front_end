@@ -1,21 +1,23 @@
 <template>
-    <reply-modal v-show = "isReplying" />
-    <message @messageSend="isReplying = true" v-for="message in messages" :message="message" :editable="editable" :key="message._id"
+    <reply-modal :message= "this.replyingToMessage" @closeReplyModal = "closeReplyModal" v-show = "isReplying" />
+
+    <message-holder :allowReplying = this.allowReplying @reply="openReplyModal" v-for="message in messages" :message="message" :editable="editable" :key="message._id"
         :username="this.username" :allowVistingProfile = "this.allowVistingProfile" :url="this.Url" />
 </template>
 
 <script>
 import config from "@/config";
-import Message from "@/components/message.vue";
 import axios from "axios";
 import ReplyModal from "@/components/replyModal.vue"
+import messageHolder from "@/components/message/messageHolder.vue";
+
 
 
 
 export default {
     components: {
-        Message,
         ReplyModal,
+        messageHolder
     },
     props: {
         messages: {
@@ -30,6 +32,10 @@ export default {
         allowVistingProfile:{
             type: Boolean,
             default: true
+        },
+        allowReplying: {
+            type:Boolean,
+            default: true
         }
     },
 
@@ -37,7 +43,8 @@ export default {
         return {
             Url: config.apiUrl,
             username: "",
-            isReplying: false
+            isReplying: false,
+            replyingToMessage: {},
 
         };
     },
@@ -50,6 +57,15 @@ export default {
     },
 
     methods: {
+        closeReplyModal(){
+           this.isReplying = false
+
+        },
+        openReplyModal(e){
+            this.isReplying = true
+            this.replyingToMessage = e
+
+        }
 
 
     }
