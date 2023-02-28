@@ -3,8 +3,8 @@
   <div class="container-fluid flex  lex-row items-start">
 
     <main-sidebar @refreshProfile=this.refreshProfile() class="bg-slate-800 "></main-sidebar>
-
-    <div class="w-full h-screen pl-2 md:pl-24 lg:pl-64 overflow-scroll">
+    <loading v-if = "loading" />
+    <div v-else = "!loading" class="w-full h-screen pl-2 md:pl-24 lg:pl-64 overflow-scroll">
       <div class="profile h-full w-full lg:w-[640px]">
         <div class="h-2/5 ">
           <div class="banner h-2/5 ">
@@ -64,6 +64,8 @@ import MessageBox from '@/components/messageBox.vue';
 import MainSidebar from "@/components/mainSidebar.vue";
 import messagesList from "@/components/messagesList.vue";
 import message from "@/components/message.vue";
+import loading from "@/components/loading.vue";
+
 
 
 
@@ -80,12 +82,14 @@ export default {
     MainSidebar,
     messagesList,
     message,
+    loading
 
   },
   data() {
     return {
       editable: false,
       isFollowing: false,
+      loading: true,
 
       messages: [],
       user: {
@@ -98,7 +102,7 @@ export default {
   },
 
 
-  mounted() {
+  created() {
 
 
     const name = this.$route.query.user;
@@ -148,6 +152,7 @@ export default {
         const profileData = response.data;
         this.user.username = name;
         this.user.description = profileData.description;
+        this.loading = false;
 
 
         this.isCurrentUserLoggedInUser()
