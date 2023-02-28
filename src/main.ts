@@ -12,6 +12,8 @@ import Register from './views/Register.vue'
 import Profile from './views/Profile.vue'
 import Discover from './views/Discover.vue'
 import Dev from './views/Dev.vue'
+import Replies from './views/Replies.vue'
+
 
 
 import '@/axios'
@@ -40,6 +42,8 @@ const router = createRouter({
         {path: '/Discover', name: 'Discover', component: Discover},
         {path: '/Dev', name: 'Dev', component: Dev},
         {path: '/Profile', name: 'Profile', component: Profile},
+        {path: '/Replies', name: 'Replies', component: Replies},
+
 
 
 
