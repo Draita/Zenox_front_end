@@ -81,10 +81,8 @@ export default {
  async mounted() {
     axios.get('/checklogin')
       .then((response) => {
-
         if (response.status == 200) {
           this.$router.push('/profile/?user='+response.data)
-
         }
       })
       .catch((error) => {
