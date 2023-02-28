@@ -4,11 +4,11 @@
     aria-label="Sidebar">
     <div class="h-full pl-2 md:pl-5 md:pr-5 overflow-y-auto bg-gray-50 dark:bg-gray-800 pt-5">
 
-      <ul class="space-y-4">
+      <ul class="">
 
         <li>
           <a @click="$router.push('/feed')"
-            class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            class="menu-item flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg aria-hidden="true" width="24px" fill="currentColor" viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
               <path fill="#636363" d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -19,7 +19,7 @@
         </li>
         <li>
           <a @click="$router.push('/discover')"
-            class="flex items-center text-base font-normal text-gray-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            class="menu-item flex items-center text-base font-normal text-gray-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg width="24px" fill="none" stroke="#636363" stroke-width="1.5" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -33,7 +33,7 @@
 
         <li>
           <a
-            class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            class="menu-item flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg aria-hidden="true"
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
               fill="currentColor" viewBox="0 0 20 20">
@@ -52,7 +52,7 @@
         </li>
         <li>
           <a @click=profilePage()
-            class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            class="menu-item flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg aria-hidden="true" width="24px"
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
               fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +65,7 @@
         <li>
 
           <a @click=logout()
-            class="flex  items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            class="menu-item flex  items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg width="24px" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true">
               <path fill="#636363" clip-rule="evenodd" fill-rule="evenodd"
@@ -125,5 +125,9 @@ export default {
   .text {
     display: none;
   }
+}
+.menu-item{
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 </style>
