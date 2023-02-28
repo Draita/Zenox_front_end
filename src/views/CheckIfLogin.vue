@@ -78,8 +78,9 @@ export default {
     return { showMenu, toggleNav };
   },
 
-  mounted() {
-
+ async mounted() {
+     const res = await  axios.get('/set-cookie')
+   console.log(res.data)
     axios.get('/checklogin')
       .then((response) => {
 
@@ -91,6 +92,7 @@ export default {
       .catch((error) => {
         this.showHome = true
       });
+
   }
 }
 </script>

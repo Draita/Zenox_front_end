@@ -40,6 +40,7 @@ export default {
             })
                 .then( (response) => {
                     const status = response.status;
+                    console.log(response)
 
 
                     if (status == 200) {
@@ -50,7 +51,7 @@ export default {
                 }).catch(function (error) {
 
                     //TODO: add later that it it displays the error
-                    console.log("error")
+                    console.log(error)
                 });
         },
     },

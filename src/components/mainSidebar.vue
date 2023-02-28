@@ -9,9 +9,8 @@
         <li>
           <a @click="$router.push('/feed')"
             class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-            <svg aria-hidden="true"
-            width="24px"
-              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <svg aria-hidden="true" width="24px" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
               <path fill="#636363" d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
               <path fill="#636363" d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
             </svg>
@@ -54,8 +53,8 @@
         <li>
           <a @click=profilePage()
             class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-            <svg aria-hidden="true"
-            width="24px" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+            <svg aria-hidden="true" width="24px"
+              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
               fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
               </path>
@@ -90,7 +89,6 @@ export default {
   name: "Sidebar",
   methods: {
     profilePage() {
-      console.log("YOO")
 
       axios.get('/checklogin')
         .then((response) => {
@@ -107,6 +105,10 @@ export default {
         })
     },
     logout() {
+      // document.cookie = token + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      // this.$cookie.set('demomy', 'Welcome ro Pakainfo.com', 1);
+
+
       axios.get('/logout').then((response) => {
         console.log(response)
         this.$router.push('/')
@@ -120,9 +122,8 @@ export default {
 
 <style>
 @media only screen and (max-width: 767px) {
-    .text {
-        display: none;
-    }
+  .text {
+    display: none;
+  }
 }
-
 </style>
