@@ -79,7 +79,6 @@ export default {
   },
 
  async mounted() {
-     const res = await  axios.get('/set-cookie')
    console.log(res.data)
     axios.get('/checklogin')
       .then((response) => {
