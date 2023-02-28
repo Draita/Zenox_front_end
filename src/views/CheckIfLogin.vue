@@ -79,7 +79,6 @@ export default {
   },
 
  async mounted() {
-   console.log(res.data)
     axios.get('/checklogin')
       .then((response) => {
 
