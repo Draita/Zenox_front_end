@@ -1,5 +1,7 @@
 <template>
-  <div v-if = "showHome" class="h-screen overflow-hidden">
+  <loading v-if = "!showHome" />
+
+  <div v-else = "showHome" class="h-screen overflow-hidden">
     <div class="bg-black ">
       <nav class="
               container
@@ -62,10 +64,15 @@
 
 <script>
 import { ref } from 'vue';
+import loading from "@/components/loading.vue";
+
 
 import axios from "axios";
 
 export default {
+  components: {
+    loading
+  },
 
   data(){
     return{
