@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 // Import child routers
-import zenoxRouter from './zenox/router.ts';
 
-import landingPageRouter from './landingPage/router.ts';
 import Home from '@/landingPage/views/Home.vue';
 
 import LandingPage from './landingPage/App.vue';
