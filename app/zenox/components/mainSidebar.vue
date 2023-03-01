@@ -1,5 +1,5 @@
 <template>
-  <!-- TODO: MAKE TEXT DISAPEAR WHEN the preview becomes too small -->
+
   <aside id="logo-sidebar" class=" w-10 md:w-fit h-screen transition-transform-translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
     <div class="h-full pl-2 md:pl-5 md:pr-5 overflow-y-auto bg-gray-50 dark:bg-gray-800 pt-5">

@@ -29,10 +29,10 @@
   </template>
 
 <script>
-import MainSidebar from "@/components/mainSidebar.vue";
-import MessageBox from "@/components/messageBox.vue";
-import Message from "@/components/message.vue";
-import messagesList from "@/components/messagesList.vue";
+import MainSidebar from "@/zenox/components/mainSidebar.vue";
+import MessageBox from "@/zenox/components/messageBox.vue";
+import Message from "@/zenox/components/message.vue";
+import messagesList from "@/zenox/components/messagesList.vue";
 
 import axios from "axios";
 

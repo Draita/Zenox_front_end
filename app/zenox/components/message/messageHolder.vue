@@ -23,9 +23,9 @@
 <script>
 import config from "@/config";
 import axios from "axios";
-import messageBottom from "@/components/message/messageBottom.vue";
-import messageContent from "@/components/message/messageContent.vue";
-import messageOptions from "@/components/message/messageOptions.vue";
+import messageBottom from "@/zenox/components/message/messageBottom.vue";
+import messageContent from "@/zenox/components/message/messageContent.vue";
+import messageOptions from "@/zenox/components/message/messageOptions.vue";
 
 
 

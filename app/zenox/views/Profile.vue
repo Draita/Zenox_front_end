@@ -59,11 +59,11 @@
 <script>
 import axios from "axios";
 import config from "@/config";
-import ChangeProfile from "@/components/changeProfile.vue"
-import MessageBox from '@/components/messageBox.vue';
-import MainSidebar from "@/components/mainSidebar.vue";
-import messagesList from "@/components/messagesList.vue";
-import message from "@/components/message.vue";
+import ChangeProfile from "@/zenox/components/changeProfile.vue"
+import MessageBox from '@/zenox/components/messageBox.vue';
+import MainSidebar from "@/zenox/components/mainSidebar.vue";
+import messagesList from "@/zenox/components/messagesList.vue";
+import message from "@/zenox/components/message.vue";
 import loading from "@/components/loading.vue";
 
 

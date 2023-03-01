@@ -8,8 +8,8 @@
 <script>
 import config from "@/config";
 import axios from "axios";
-import ReplyModal from "@/components/replyModal.vue"
-import messageHolder from "@/components/message/messageHolder.vue";
+import ReplyModal from "@/zenox/components/replyModal.vue"
+import messageHolder from "@/zenox/components/message/messageHolder.vue";
 
 
 

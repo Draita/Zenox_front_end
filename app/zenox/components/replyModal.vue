@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import messageBox from '@/components/messageBox.vue';
+import messageBox from '@/zenox/components/messageBox.vue';
 import axios from "axios";
 
 

@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import MainSidebar from '@/components/mainSidebar.vue';
-import MessageBox from '@/components/messageBox.vue';
+import MainSidebar from '@/zenox/components/mainSidebar.vue';
+import MessageBox from '@/zenox/components/messageBox.vue';
 
 export default {
   components: {

@@ -18,7 +18,7 @@
 <script>
 import config from "@/config";
 import axios from "axios";
-import messageBottom from "@/components/message/messageBottom.vue";
+import messageBottom from "@/zenox/components/message/messageBottom.vue";
 
 
 
