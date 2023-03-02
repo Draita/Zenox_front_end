@@ -1,8 +1,9 @@
 <template>
-    <div class="for-animation fixed top-[130px] right-0 w-full ">
+    <div class="for-animation fixed top-[130px] right-0 w-full  ">
+        <div class="h-[15%]"></div>
         <div class="flex flex-row justify-center register">
         <div class="text-white  text-start pl-3 pr-3 w-fit md:w-[400px]">
-            <div class="div  text-[50px] w-full leading-[60px] mt-[-20px]">
+            <div class="div  text-[50px] w-full leading-[60px] md:text-[65px] md:leading-[70px]">
                 <div class="flex">
                     <img class="w-[50px]  align-middle	" src="@/assets/icons/star2.svg">
                     <p> MY</p>
@@ -12,28 +13,28 @@
                     ACCOUNT
                 </p>
             </div>
-            <div class="text-[12px]  font-light pt-[30px] w-[70%] ">
+            <div class="text-[12px]  font-light pt-[30px] w-[70%] md:text-[16px] ">
                 <p>Sign in with your ZENOX email and password or create a profile if you are new.</p>
             </div>
 
             <form>
                 <div class="space-y-[30px]">
                     <div>
-                        <input @click="resetFields" v-model="email" type="email" id="email" class="border-white bg-black border-[1px] focus:border-[0px] rounded-none placeholder-white
-                                                            text-sm  focus:text-black focus:bg-white no-outline focus:ring-0 focus:border-transparent focus:mb-[2px]
+                        <input @click="resetFields" v-model="email" type="email" id="email" class="border-white  inner-border-1  bg-black   rounded-none placeholder-white
+                                                            text-sm  focus:text-black focus:bg-white no-outline focus:ring-0 focus:border-transparent
                                                             w-full mt-10" :class="{ 'border-red-800': emailWrong }"
                             placeholder="EMAIL*" required>
                     </div>
 
 
                     <input @click="this.usernameWrong = false" v-model="username" v-show="usernameFieldShow" type="text"
-                        id="username" class="border-white bg-black border-[1px] focus:border-[0px] rounded-none placeholder-white
-                                                            text-sm  focus:text-black focus:bg-white no-outline focus:ring-0 focus:border-transparent focus:mb-[2px]
+                        id="username" class="border-white  inner-border-1  bg-black   rounded-none placeholder-white
+                                                            text-sm  focus:text-black focus:bg-white no-outline focus:ring-0 focus:border-transparent
                                                             w-full mt-10" :class="{ 'border-red-800': usernameWrong }" placeholder="USERNAME*" >
 
                     <input @click="this.passwordWrong = false" v-model="password" v-show="this.passwordFieldShow"
-                        type="text" id="password" class="border-white bg-black border-[1px] focus:border-[0px] rounded-none placeholder-white
-                                                            text-sm  focus:text-black focus:bg-white no-outline focus:ring-0 focus:border-transparent focus:mb-[2px]
+                        type="text" id="password" class="border-white  inner-border-1  bg-black   rounded-none placeholder-white
+                                                            text-sm  focus:text-black focus:bg-white no-outline focus:ring-0 focus:border-transparent
                                                             w-full mt-10" :class="{ 'border-red-800': passwordWrong }"
                         placeholder="PASSWORD*">
 
