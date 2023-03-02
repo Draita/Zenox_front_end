@@ -1,7 +1,7 @@
 <template>
 
 
-  <div  class="container-fluid select-none font-inter flex overflow-hidden	">
+  <div  class="container-fluid select-none font-inter flex overflow-hidden	scrollbar-hide">
     <div class="absolute inset-0 bg-black w-full text-center font-medium ">
       <topBar />
 
@@ -10,7 +10,7 @@
         <div class="group">
           <button @click="topButtonClick"
             class="z-50 lg:mr-[50px] lg:mt-[10px] bg-white text-black lg:h-9 lg:w-[95px] border-0 transition  ease-in-out
-                             group-hover:bg-black group-hover:text-white h-8 w-20 text-[14px] lg:text-[20px] text-white rounded-full"
+                             group-hover:bg-black group-hover:text-white h-8 w-20 text-[14px] lg:text-[20px] rounded-full"
                              :class="{ 'text-red': this.showHome }">
             {{this.buttonText}}   </button>
 
@@ -122,6 +122,7 @@ export default {
 .nested-enter-active .logo,
 .nested-leave-active .logo {
   transition: all 1s ease-in-out;
+
 }
 
 .nested-enter-from .logo,
@@ -149,6 +150,7 @@ export default {
 .nested-enter-from .register,
 .nested-leave-to .register {
   transform: translateY(-140vh);
+
 
 }
 
