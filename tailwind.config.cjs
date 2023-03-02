@@ -11,6 +11,8 @@ module.exports = {
   plugins: [
     require('flowbite/plugin'),
     require('tailwind-scrollbar-hide'),
-    require('tailwindcss-font-inter')
+    require('tailwindcss-font-inter'),
+    require('tailwindcss-inner-border'),
+
   ],
 }
