@@ -1,54 +1,12 @@
 <template>
-    <div class="container-fluid bg-black absolute inset-0 font-medium  ">
-        <aside
-            class="absolute inset-0 sidebar bg-white h-screen w-[28px] md:w-[120px] flex flex-col  items-center md:items-start ">
+    <loading v-if="loading" />
+    <div v-else="!loading" class="container-fluid h-full w-full items-center  font-medium  ">
 
-
-
-            <img class=" w-[28px] mt-[4px] pl-[2px] md:pl-[5px]  pb-[19px]  align-middle" src="@/assets/icons/star.svg">
-
-            <a @click="$router.push('/feed')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
-                       w-full pl-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
-                <img class="w-[24px]  align-middle" src="@/assets/icons/home.svg">
-
-                <span class="ml-3 text">Home</span>
-            </a>
-
-            <a @click="$router.push('/discover')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
-                   w-full pl-[2px] md:pl-[5px] pt-[19px] pb-[19px] ">
-                    <img class="w-[24px]  align-middle " src="@/assets/icons/discover.svg">
-
-                    <span class="ml-3 text">Discover</span>
-                </a>
-
-                <a @click="$router.push('/message')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
-                   w-full  pl-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
-                    <img class="w-[24px]  align-middle" src="@/assets/icons/message.svg">
-
-                    <span class="ml-3 text">message</span>
-                </a>
-
-                <a @click="$router.push('/profile')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
-                   w-full l-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
-                    <img class="w-[24px]  align-middle" src="@/assets/icons/profile.svg">
-
-                    <span class="ml-3 text">message</span>
-                </a>
-
-                <a @click="$router.push('/profile')" class="  fixed w-[28px] items-center md:items-start md:w-[120px] bottom-0  bg-white hover:bg-black hover:text-white flex  text-base font-normal text-gray-900
-                    pl-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
-                    <img class="w-[24px]  align-middle" src="@/assets/icons/logout.svg">
-
-                    <span class="ml-3 text">logout</span>
-                </a>
-
-
-        </aside>
         <div class="flex justify-center w-full">
 
 
 
-            <div class="pl-[28px] w-full">
+            <div class=" w-full">
                 <!-- header -->
                 <div class="w-full bg-white h-[30px] text-[12px] pt-1  text-sm font-semibold text-start">
                     <div class="flex justify-start items-start content-start">
@@ -58,7 +16,7 @@
                 </div>
                 <!-- profile header -->
 
-                <div class="w-full  ">
+                <div class="w-full  h-[246px]">
                     <div class="w-full flex justify-center">
                         <img class="h-[146px] w-[510px]  border-white border-l-[1px] border-r-[1px] object-fill"
                             src="@/assets/banner.png">
@@ -71,7 +29,7 @@
                             <div class=" grid grid-cols-2 w-[510px]  border-black border-l-[1px]">
                                 <div class="profile-picture flex  justify-center w-full mt-[-70px]">
                                     <img class="h-[133px] w-[133px]
-                                                            rounded-full border-[4px] border-white"
+                                                                        rounded-full border-[4px] border-white"
                                         src="@/assets/profile_picture.png">
                                 </div>
 
@@ -85,10 +43,11 @@
                                         </svg>
                                         <!-- profile content and button -->
                                         <div class="button-and-text w-[140px]">
-                                            <p class="text-[20px] font-bold">Thijmen</p>
+                                            <p class="text-[20px] font-bold">{{ user.username }}</p>
                                             <button class=" bg-black text-white w-[119px]
-                                                            inner-border-0 border-black hover:inner-border-1 hover:bg-white hover:text-black
-                                                            transition duration-300 ease-in-out  ">EDIT PROFILE</button>
+                                                                        inner-border-0 border-black hover:inner-border-1 hover:bg-white hover:text-black
+                                                                        transition duration-300 ease-in-out  " @click="profileButtonClick
+                                                                        ">{{ profileButtonText}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -97,13 +56,12 @@
 
 
                         </div>
-                        <div class="bio h-[40px]   bg-white  flex justify-center">
+                        <!-- TODO: remove margin -1 -->
+                        <div class="bio h-[40px]  mt-[-1px] bg-white  flex justify-center">
                             <div
                                 class="w-[510px] background-bio    h-full  z-10 border-black border-t-[1px] border-r-[1px] border-l-[1px] ">
                                 <p class="text-start pl-[11px] h-full text-[12px] pt-[6px] pr-[6px]  overflow-hidden "> HI
-                                    MY NAME IS THIJMEN Hi my name is thijmen and welcome to my profile Hi my name is thijmen
-                                    and welcome to my profile Hi my name is thijmen and welcome Hi my name is thijmen and
-                                    welcome to my profile </p>
+                                    {{ user.description }}</p>
                             </div>
                         </div>
 
@@ -112,66 +70,16 @@
                 </div>
 
 
-                <div class="border-[1px] border-white"></div>
-                <!-- messageHeader -->
-                <div class=" flex justify-center pt-[35px]">
-                    <div class="border-b-[1px] border-l-[1px] border-r-[1px] h-[125px] border-white  w-[510px] ">
-                        <div class=" w-full  pl-[12px] pt-[6px] text-white border-white font-bold ">
-                            <p class="pb-[1px] font-[2px] "> MESSAGE</p>
-                            <div class="message flex items-end ">
-                                <div class="h-[94px] w-full border-white border-[1px] mr-[-1px] background-text-box ">
-                                    <p class="pl-[6px] pt-[6px] font-light text-[12px]">HERE IS MY TEXT</p>
-                                </div>
-                                <div class="buttons-holder w-[101px] mr-[12px] h-full">
-                                    <button class="h-[33px] mb-[-1px] border-white border-[1px] text-white w-[101px]  font-bold
-                                                    hover:bg-white hover:text-black transition duration-300 ease-in-out ">
-                                        ADD IMAGE</button>
-                                    <button class="h-[31px] border-white border-[1px] text-white w-[101px]  font-bold
-                                                hover:bg-white hover:text-black transition duration-300 ease-in-out">
-                                        SEND</button>
-                                </div>
 
-                            </div>
+                <message-box v-show="editable" @messageSend="sendMessage" class="" />
 
-                        </div>
 
-                    </div>
 
-                </div>
-                <div class="w-full flex justify-center">
-                    <!-- MESSAGELIST -->
-                    <div class="message-list w-[510px]">
-                        <div
-                            class="message pt-[5px] pl-[5px] border-b-[1px] border-l-[1px] border-r-[1px] border-white h-fit flex ">
-                            <img class="h-[58px] w-[58px] rounded-full border-white  invert-0 hover:invert transition hover:opacity-50 duration-300 ease-in-out"
-                                src="@/assets/profile_picture.png">
-                            <div class="message-content pl-[17px] text-white">
-                                <div class="header flex  text-[13px] ">
-                                    <p class=" font-bold w-[103px]">Thijmen</p>
-                                    <p class=" font-light">21 hours ago</p>
-                                </div>
-                                <p class="pt-[3px]">Hello my name is Thijmen and today
-                                    I will post a message</p>
-                                <div class="bottom flex items-center gap-x-[40px] font-light">
 
-                                    <button class="flex items-center  hover:opacity-50 ">
-                                        <img class="w-[24px] align-middle" src="@/assets/icons/like.svg">
+                <messages-list :editable="editable" :allowVistingProfile=false :messages=this.messages>
+                </messages-list>
 
-                                        <span class="ml-2 ">1</span>
-                                    </button>
 
-                                    <button class="flex items-center  hover:opacity-50 ">
-                                        <img class="w-[24px]  align-middle" src="@/assets/icons/react.svg">
-
-                                        <span class="ml-2  ">1</span>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
 
 
@@ -184,6 +92,180 @@
 
     </div>
 </template>
+
+<script>
+import axios from "axios";
+import config from "@/config";
+import ChangeProfile from "@/zenox/components/changeProfile.vue"
+import MessageBox from '@/zenox/components/messageBox.vue';
+import MainSidebar from "@/zenox/components/mainSidebar.vue";
+import messagesList from "@/zenox/components/messagesList.vue";
+import message from "@/zenox/components/message.vue";
+import loading from "@/components/loading.vue";
+
+
+
+
+
+
+
+
+
+
+export default {
+    components: {
+        ChangeProfile,
+        MessageBox,
+        MainSidebar,
+        messagesList,
+        message,
+        loading,
+
+
+    },
+    data() {
+        return {
+            profileButtonText: "",
+            editable: false,
+            isFollowing: false,
+            loading: true,
+
+            messages: [],
+            user: {
+                username: "",
+                description: "",
+                profilePicture: "https://via.placeholder.com/150",
+            },
+            isModalVisible: false,
+        };
+    },
+
+
+    created() {
+        const name = this.$route.query.user;
+        this.updateMessages
+        console.log(this.messages)
+
+        this.setProfilePicture(name)
+        this.checkFollow(name);
+        this.getMessages(name);
+        this.updateProfile(name)
+
+    },
+    methods: {
+        profileButtonClick() {
+            if (this.editable) (
+                console.log("EDIT PROFILE")
+            )
+            if (!this.editable && this.isFollowing) (
+                this.unfollow()
+            )
+            if (!this.editable && !this.isFollowing) (
+                this.follow()
+            )
+
+        },
+        sendMessage(e) {
+            console.log(e);
+            axios.post('/messages', e, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then((response) => {
+                //TODO: impliment later that data is returned from endpoint and added to the this.messages
+                // this.messages.unshift(response.data)
+                this.getMessages(this.user.username);
+            }
+            ).catch((error) => {
+                console.error(error);
+            });
+
+        },
+        showModal() {
+            this.isModalVisible = true;
+
+        },
+        hideModal() {
+            this.isModalVisible = false;
+        },
+
+        //used when profile is selected on the main sidebar when already visitng a profile
+        //otherwise the profile won't update
+        refreshProfile() {
+            const name = this.$route.query.user
+            this.getMessages(name)
+            this.updateProfile(name)
+        },
+        updateProfile(name) {
+            console.log("refreshProfile")
+            axios.get('/profile/get/' + name).then((response) => {
+                const profileData = response.data;
+                this.user.username = name;
+                this.user.description = profileData.description;
+                this.loading = false;
+
+
+                this.isCurrentUserLoggedInUser()
+            });
+
+            this.setProfilePicture(name)
+        },
+
+        setProfilePicture(username) {
+            const today = new Date();
+            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            this.user.profilePicture = config.apiUrl + '/profile/profile_picture/' + username + "?t=" + time;
+
+        },
+        follow() {
+            axios.get('/follow/go/' + this.user.username).then((response) => {
+                this.checkFollow(this.user.username)
+            })
+        },
+
+        unfollow() {
+            axios.get('/follow/un/' + this.user.username).then((response) => {
+                this.checkFollow(this.user.username)
+            })
+
+        },
+        checkFollow(name) {
+            axios.get('/follow/isfollowing/' + name).then((response) => {
+                this.isFollowing = response.data.isFollowing
+                if (this.isFollowing) {
+                    this.profileButtonText = "UNFOLLOW"
+                } else {
+                    this.profileButtonText = "FOLLOW"
+
+                }
+            });
+
+        },
+        getMessages(name) {
+            axios
+                .get('/messages/profile/' + name)
+                .then((response) => {
+                    this.messages = response.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+
+        isCurrentUserLoggedInUser() {
+            axios.get('checklogin').then(res => {
+                if (res.data == this.user.username) {
+                    this.editable = true
+                    this.profileButtonText = "EDIT PROFILE"
+
+                }
+            });
+
+        }
+    },
+};
+</script>
+
 <style>
 .background-grid-black {
     background: url("@/assets/grids/black-grid.svg") top left;
