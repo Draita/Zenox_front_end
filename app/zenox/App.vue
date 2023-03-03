@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
@@ -13,12 +13,25 @@
   <!-- <HelloWorld msg="Vite + Vue" /> -->
   <!-- <Homepage></Homepage> -->
 
+    <MainSidebar class="z-50"></MainSidebar>
+    <RouterView class = "pl-[28px]"></RouterView>
 
-  <RouterView></RouterView>
+
 
 
 
 </template>
+
+<script>
+import MainSidebar from "@/zenox/components/mainSidebar.vue";
+
+export default {
+  components: {
+    MainSidebar
+  },
+}
+
+</script>
 
 <style scoped>
 @tailwind base;
