@@ -1,5 +1,5 @@
 const config = {
-  apiUrl: 'https://zenox-back-end.azurewebsites.net'
+  apiUrl: 'http://localhost:3000'
 };
 
 export default config;
