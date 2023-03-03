@@ -1,31 +1,39 @@
 <template>
-  <div class="flex ">
-    <div class="w-full max-w-md">
-      <form @submit.prevent="sendMessage" class="bg-white  rounded">
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="message">
-           {{header}}
-          </label>
-          <textarea v-model="message" id="message" name="message"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+  <div class=" flex justify-center">
+    <div class="border-b-[1px] border-l-[1px] border-r-[1px] h-[125px] border-white  w-[510px] ">
+      <div class=" w-full  pl-[12px] pt-[6px] text-white border-white font-bold ">
+        <p class="pb-[1px] font-[2px] "> MESSAGE</p>
+        <div class="message flex items-end ">
+          <!-- <div class="h-[94px] w-full border-white border-[1px] mr-[-1px] background-text-box "> -->
+            <textarea v-model="message" id="message" name="message"
+            class="h-[94px] w-full resize-none  border-[0px] mr-[-1px] font-light text-[12px] background-text-box
+            no-outline focus:ring-0 focus:border-transparent
+            border-white  inner-border-[1px]"
             rows="4"></textarea>
+
+            <!-- <p class="pl-[6px] pt-[6px] font-light text-[12px]">HERE IS MY TEXT</p>
+          </div> -->
+          <div class="buttons-holder w-[101px] mr-[12px] h-full text-white">
+            <p class = " w-[101px] text-white text-[10px] pl-[4px] pb-[8px] truncate"> {{ fileName }}</p>
+            <input @change="onFileChange" type="file" id="selectedFile" style="display: none;" />
+            <input type="button" value="ADD IMAGE" class="h-[33px] mb-[-1px] border-white border-[1px] w-[101px]  font-bold
+            hover:bg-white hover:text-black transition duration-300 ease-in-out "
+               onclick="document.getElementById('selectedFile').click();" />
+
+
+            <button @click = "sendMessage"
+              class="h-[31px] border-white border-[1px]  w-[101px]  font-bold
+                                                          hover:bg-white hover:text-black transition duration-300 ease-in-out">
+              SEND</button>
+
+          </div>
+
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="file">
-            File
-          </label>
-          <input type="file" id="file" name="file" @change="onFileChange" accept="image/*, video/*"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-        <div class="flex items-center justify-between">
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit">
-            Send
-          </button>
-        </div>
-      </form>
+
+      </div>
+
     </div>
+
   </div>
 </template>
 
@@ -36,25 +44,32 @@ export default {
   props: {
     header: {
       type: String,
-      default: "Message"
+      default: "Message",
+
     },
   },
   data() {
     return {
       message: '',
       file: null,
+      fileName: "No file selected",
     }
   },
   methods: {
     sendMessage() {
       const formData = new FormData();
 
+
       formData.append('content', this.message);
       formData.append('location', 'feed');
       formData.append("file", this.file)
       this.$emit('messageSend', formData);
-     },
+      this.message= ''
+      this.file= null
+
+    },
     onFileChange(event) {
+      this.fileName = event.target.files[0].name
       this.file = event.target.files[0];
     },
   }
