@@ -1,7 +1,6 @@
 <template>
 
     <div class="container-fluid flex flex-row items-center">
-      <main-sidebar />
       <div class=" flex flex-col w-full md:justify-center md:flex-row h-screen flex-1 overflow-scroll">
         <div class="profile flex md:w-[600px] flex-col items-center">
           <div class="flex flex-col flex-1 mx-4 md:mx-16">
@@ -29,7 +28,7 @@
   </template>
 
 <script>
-import MainSidebar from "@/zenox/components/mainSidebar.vue";
+
 import MessageBox from "@/zenox/components/messageBox.vue";
 import Message from "@/zenox/components/message.vue";
 import messagesList from "@/zenox/components/messagesList.vue";
@@ -38,7 +37,7 @@ import axios from "axios";
 
 export default {
   components: {
-    MainSidebar,
+
     MessageBox,
     Message,
     messagesList,
