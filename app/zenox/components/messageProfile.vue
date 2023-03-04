@@ -114,7 +114,7 @@ export default {
     },
 
     visitProfile() {
-        this.$router.push('/profile/?user=' + this.message.user.username)
+        this.$router.push('/profile?user=' + this.message.user.username)
     },
     getTimeElapsed(timestamp) {
         const now = new Date();
