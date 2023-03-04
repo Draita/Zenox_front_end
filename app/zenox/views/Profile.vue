@@ -9,12 +9,7 @@
 
           <div class=" w-full">
               <!-- header -->
-              <div class="w-full bg-white h-[30px] text-[12px] pt-1  text-sm font-semibold text-start">
-                  <div class="flex justify-start items-start content-start">
 
-                      <p class="absolute left-7 md:left-[120px] ">WELCOME TO ZENOX</p>
-                  </div>
-              </div>
               <!-- profile header -->
 
               <div class="w-full  h-[246px]">
