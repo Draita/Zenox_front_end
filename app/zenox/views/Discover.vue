@@ -30,16 +30,13 @@
 <script>
 
 import MessageBox from "@/zenox/components/messageBox.vue";
-import Message from "@/zenox/components/message.vue";
 import messagesList from "@/zenox/components/messagesList.vue";
 
 import axios from "axios";
 
 export default {
   components: {
-
     MessageBox,
-    Message,
     messagesList,
   },
   data() {
