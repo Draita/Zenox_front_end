@@ -19,13 +19,13 @@
 
       <span class="ml-3 text">DISCOVER</span>
     </a>
-
-    <a @click="$router.push('/message')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
+    <!-- TODO: ADD MESSAGER -->
+    <!-- <a @click="$router.push('/message')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
                      w-full  pl-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
       <img class="w-[24px]  align-middle" src="@/assets/icons/message.svg">
 
       <span class="ml-3 text">MESSAGE</span>
-    </a>
+    </a> -->
 
     <a @click="profilePage" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
                      w-full l-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
@@ -57,7 +57,7 @@ export default {
         .then((response) => {
 
           if (response.status == 200) {
-            this.$router.push('/profile/?user=' + response.data).then(() => {
+            this.$router.push('/profile?user=' + response.data).then(() => {
               console.log('Updated route', this.$route)
               this.$emit('refreshProfile')
             })
