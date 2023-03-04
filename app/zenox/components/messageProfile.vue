@@ -1,22 +1,31 @@
 <template>
+    <div  :class="{ 'hidden': !showMenuModal, 'fixed': showMenuModal }" @click="this.showMenuModal = false" class="fixed  top-0 right-0  z-40 modal-backdrop w-full h-screen">
+    </div>
     <div class="message pt-[5px] pl-[5px] border-b-[1px] border-l-[1px] border-r-[1px] border-white h-fit flex relative">
         <img class="h-[58px] w-[58px] rounded-full border-white  invert-0 hover:invert transition hover:opacity-50 duration-300 ease-in-out"
-            @click = "visitProfile" :src="this.profilePicture">
+            @click="visitProfile" :src="this.profilePicture">
         <div class="message-content   pl-[17px] text-white">
             <div class="header flex  text-[13px] ">
                 <p class=" font-bold w-[50px]">{{ this.message.user.username }}</p>
                 <p class=" font-light ml-[30px]">{{ getTimeElapsed(this.message.timestamp) }}</p>
-                <div class="absolute top-[11px] right-[12px]  ">
-                    <img class="flex w-[16px]" src="@/assets/icons/menu.svg">
-                    <div class="h-28 w-28  bg-black border-white border-[1px] absolute left-[-90px]"></div>
+                <div class="absolute top-[1px] right-[12px]  ">
+                    <img :class="{ 'hidden': !showMenu}" @click="showMenuModal = true" class="flex pt-[12px] pb-[5px] w-[16px]" src="@/assets/icons/menu.svg">
+                    <div :class="{ 'hidden': !showMenuModal, 'block': showMenuModal }"
+                        class="mt-[10px] z-50 h-[31px] w-[81px] text-[12px] flex justify-center font-light items-center bg-black border-white border-[1px] top-[-1px] absolute left-[-70px]"
+                        @click="this.deleteMessage">
+                        <img class="flex h-[13px]  w-[10px] mr-[7px]" src="@/assets/icons/delete.svg">
+
+                        <p>DELETE</p>
+
+                    </div>
                 </div>
 
             </div>
-             <p class="pt-[3px]  text-base break-all">{{ this.message.content }}</p>
-             <div class="pr-[30px]">
+            <p class="pt-[3px] text-base break-all">{{ this.message.content }}</p>
+            <div class="pr-[30px]">
                 <img v-if="message.media" class="w-full  border-white border-[1px] mt-[4px] " :src="this.media"
-                alt="Media attached to the message" />
-             </div>
+                    alt="Media attached to the message" />
+            </div>
 
 
             <div class="bottom flex items-center font-light pt-[4px] ">
@@ -54,13 +63,16 @@
 import config from "@/config";
 import axios from "axios";
 
+
 export default {
     data() {
         return {
             profilePicture: "@/assets/profile_picture.png",
             likeCount: this.message.likes.length,
             liked: this.message.liked,
-            editable: this.message.postedSelf
+            editable: this.message.postedSelf,
+            showMenuModal: false,
+            showMenu: false,
 
         }
 
@@ -79,41 +91,59 @@ export default {
 
         console.log(this.message._id)
         this.media = config.apiUrl + '/media/' + this.message.media
+        console.log(this.message.postedSelf)
+        if (this.message.postedSelf){
+            this.showMenu = true;
+
+        }
 
 
     },
+
     methods: {
-        visitProfile() {
-            this.$router.push('/profile/?user=' + this.message.user.username)
+        closeModal() {
+            console.log("bruh")
         },
-        getTimeElapsed(timestamp) {
-            const now = new Date();
-            const posted = new Date(timestamp);
-            const elapsed = now.getTime() - posted.getTime();
+        deleteMessage() {
 
-            const minutes = Math.floor(elapsed / 60000);
-            if (minutes < 60) {
-                return `${minutes} minutes ago`;
-            }
 
-            const hours = Math.floor(minutes / 60);
-            if (hours < 24) {
-                return `${hours} hours ago`;
-            }
-
-            const days = Math.floor(hours / 24);
-            return `${days} days ago`;
-        },
-        async toggleLike() {
-            try {
-                const response = await axios.post(`/messages/${this.message._id}/like`);
-                this.liked = response.data.liked;
-                this.likeCount = response.data.likes;
-            } catch (error) {
-                console.log(error);
-            }
-        },
+        axios.delete('/messages/' + this.message._id)
+            .then(response => {
+                this.$emit('delete', this.message);
+            })
     },
+
+    visitProfile() {
+        this.$router.push('/profile/?user=' + this.message.user.username)
+    },
+    getTimeElapsed(timestamp) {
+        const now = new Date();
+        const posted = new Date(timestamp);
+        const elapsed = now.getTime() - posted.getTime();
+
+        const minutes = Math.floor(elapsed / 60000);
+        if (minutes < 60) {
+            return `${minutes} minutes ago`;
+        }
+
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) {
+            return `${hours} hours ago`;
+        }
+
+        const days = Math.floor(hours / 24);
+        return `${days} days ago`;
+    },
+    async toggleLike() {
+        try {
+            const response = await axios.post(`/messages/${this.message._id}/like`);
+            this.liked = response.data.liked;
+            this.likeCount = response.data.likes;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+},
 }
 
 </script>
