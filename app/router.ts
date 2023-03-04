@@ -22,6 +22,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      component: LandingPage,
       children: [{
         path: "/",
         name: "home",
