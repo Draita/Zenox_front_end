@@ -1,5 +1,6 @@
 <template>
     <loading v-if="loading" />
+
     <div v-else="!loading" class="container-fluid h-full w-full items-center  font-medium  ">
 
         <div class="flex justify-center w-full">
@@ -91,6 +92,8 @@
 
 
     </div>
+    <change-profile v-if="isModalVisible" @close="hideModal()" @profileUpdated="updateProfile(user.username)" />
+
 </template>
 
 <script>
@@ -155,7 +158,7 @@ export default {
     methods: {
         profileButtonClick() {
             if (this.editable) (
-                console.log("EDIT PROFILE")
+                this.showModal()
             )
             if (!this.editable && this.isFollowing) (
                 this.unfollow()
@@ -251,7 +254,7 @@ export default {
                     console.log(error);
                 });
         },
-
+        //TODO: MOVE TO APP.VUE
         isCurrentUserLoggedInUser() {
             axios.get('checklogin').then(res => {
                 if (res.data == this.user.username) {
