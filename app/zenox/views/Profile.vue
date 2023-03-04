@@ -26,7 +26,7 @@
                               <div class="profile-picture flex  justify-center w-full mt-[-70px]">
                                   <img class="h-[133px] w-[133px]
                                                                       rounded-full border-[4px] border-white"
-                                      src="@/assets/profile_picture.png">
+                                      :src="this.user.profilePicture">
                               </div>
 
                               <div class=" h-full background-grid-black  text-black border-black border-r-[1px]">
