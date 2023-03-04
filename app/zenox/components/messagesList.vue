@@ -39,9 +39,6 @@ export default {
     },
 
     methods: {
-        created(){
-            console.log(this.messages)
-        },
         openReplies(e) {
             this.$router.push('/replies?message=' + e)
         },
