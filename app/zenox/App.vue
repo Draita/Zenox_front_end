@@ -7,19 +7,24 @@
 </script>
 
 <template>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <!-- <HelloWorld msg="Vite + Vue" /> -->
   <!-- <Homepage></Homepage> -->
 
-    <MainSidebar class="z-30"></MainSidebar>
-    <RouterView class = "pl-[28px]"></RouterView>
+  <MainSidebar class="z-30"></MainSidebar>
 
+  <div class="pl-[28px]">
+    <div class="w-full bg-white h-[30px] text-[12px] pt-1  text-sm font-semibold text-start">
+      <div class="flex justify-start items-start content-start">
 
+        <p class="absolute left-7 md:left-[120px] ">WELCOME TO ZENOX</p>
+      </div>
+    </div>
+    <RouterView></RouterView>
 
-
-
+  </div>
 </template>
 
 <script>
@@ -51,6 +56,4 @@ export default {
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
-
-
 </style>
