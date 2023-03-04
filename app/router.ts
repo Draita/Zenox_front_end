@@ -9,7 +9,6 @@ import Zenox from './zenox/App.vue';
 
 
 //zenox
-import Menu from '@/zenox/views/Menu.vue'
 import Profile from '@/zenox/views/Profile.vue'
 import Discover from '@/zenox/views/Discover.vue'
 import Dev from '@/zenox/views/Dev.vue'
@@ -34,7 +33,6 @@ const router = createRouter({
       path: '/',
       component: Zenox,
       children: [
-        {path: '/menu', name: 'menu', component: Menu},
         {path: '/Feed', name: 'Feed', component: Feed},
         {path: '/Discover', name: 'Discover', component: Discover},
         {path: '/Dev', name: 'Dev', component: Dev},
