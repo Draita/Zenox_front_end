@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center" v-show="isModalVisible">
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center z-40 overflow-clip items-center" v-show="isModalVisible">
     <div class="bg-white p-8 rounded-md shadow-lg">
       <h3 class="text-lg font-semibold mb-4">Update Profile</h3>
       <form @submit.prevent="onSubmit">
