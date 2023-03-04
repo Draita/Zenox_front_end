@@ -13,7 +13,7 @@
   <!-- <HelloWorld msg="Vite + Vue" /> -->
   <!-- <Homepage></Homepage> -->
 
-    <MainSidebar class="z-50"></MainSidebar>
+    <MainSidebar class="z-30"></MainSidebar>
     <RouterView class = "pl-[28px]"></RouterView>
 
 
