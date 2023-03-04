@@ -52,7 +52,7 @@
                     @click="this.$emit('reply', this.message._id)">
                     <img class="w-[24px]  align-middle" src="@/assets/icons/react.svg">
 
-                    <span class="ml-2  ">1</span>
+                    <span class="ml-2  ">{{this.reactionCount}}</span>
                 </button>
 
             </div>
@@ -73,6 +73,7 @@ export default {
             editable: this.message.postedSelf,
             showMenuModal: false,
             showMenu: false,
+            reactionCount: this.message.replies.length,
 
         }
 
@@ -88,22 +89,15 @@ export default {
     },
     created() {
         this.profilePicture = config.apiUrl + '/profile/profile_picture/' + this.message.user.username
-
-        console.log(this.message._id)
         this.media = config.apiUrl + '/media/' + this.message.media
-        console.log(this.message.postedSelf)
         if (this.message.postedSelf){
             this.showMenu = true;
-
         }
 
 
     },
 
     methods: {
-        closeModal() {
-            console.log("bruh")
-        },
         deleteMessage() {
 
 
