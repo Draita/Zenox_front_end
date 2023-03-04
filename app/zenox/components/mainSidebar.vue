@@ -4,7 +4,7 @@
 
 
 
-    <img class=" w-[28px] mt-[4px] pl-[2px] md:pl-[5px]  pb-[19px]  align-middle" src="@/assets/icons/star.svg">
+    <img @click="$router.push('/')" class=" w-[28px] mt-[4px] pl-[2px] md:pl-[5px]  pb-[19px]  align-middle" src="@/assets/icons/star.svg">
 
     <a @click="$router.push('/feed')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
                          w-full pl-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
