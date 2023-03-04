@@ -28,7 +28,7 @@
     </a> -->
 
     <a @click="profilePage" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
-                     w-full l-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
+                     w-full pl-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
       <img class="w-[24px]  align-middle" src="@/assets/icons/profile.svg">
 
       <span class="ml-3 text">PROFILE</span>
