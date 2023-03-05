@@ -15,7 +15,7 @@
           </div> -->
           <div class="buttons-holder w-[101px] mr-[12px] h-full text-white">
             <p class = " w-[101px] text-white text-[10px] pl-[4px] pb-[8px] truncate"> {{ fileName }}</p>
-            <input @change="onFileChange" type="file" id="selectedFile" style="display: none;" />
+            <input  accept="image/png, image/gif, image/jpeg"  @change="onFileChange" type="file" id="selectedFile" style="display: none;" />
             <input type="button" value="ADD IMAGE" class="h-[33px] mb-[-1px] border-white border-[1px] w-[101px]  font-bold
             hover:bg-white hover:text-black transition duration-300 ease-in-out "
                onclick="document.getElementById('selectedFile').click();" />
