@@ -4,7 +4,7 @@ import webfontDownload from 'vite-plugin-webfont-dl';
 import path from 'path'
 
 export default defineConfig({
-  plugins: [vue(),webfontDownload(),],
+  plugins: [vue(),webfontDownload()],
   server:{
     hmr: { overlay: false },
     watch:{
