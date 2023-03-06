@@ -31,17 +31,17 @@ const router = createRouter({
     ]
     },
     {
-      path: '/',
+      path: '/zenox',
       component: Zenox,
       children: [
-        {path: '/Feed', name: 'Feed', component: Feed},
-        {path: '/Discover', name: 'Discover', component: Discover},
-        {path: '/Dev', name: 'Dev', component: Dev},
-        {path: '/Profile', name: 'Profile', component: Profile},
-        {path: '/Replies', name: 'Replies', component: Replies},
+        { path: 'feed', name: 'Feed', component: Feed },
+        { path: 'discover', name: 'Discover', component: Discover },
+        { path: 'dev', name: 'Dev', component: Dev },
+        { path: 'profile/:username?', name: 'Profile', component: Profile },
+        { path: 'replies', name: 'Replies', component: Replies }
+      ]
+    }
 
-      ],
-    },
   ],
 });
 
