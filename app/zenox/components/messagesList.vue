@@ -54,7 +54,7 @@ export default {
             console.log(e)
 
             // this.messages.splice(this.messages.findIndex(message => message._id === '64030e8d32aaeb70b3c78fb2'),1);
-            this.messages.splice(this.rows.indexOf(e), 1)
+            this.messages.splice(this.messages.indexOf(e), 1)
 
 
             // this.$emit('reply', this.message)
