@@ -3,7 +3,13 @@
     <div class="w-full flex justify-center">
 
         <div class="message-list width-formatting ">
-            <messageProfile v-for="message in messages" @reply="openReplies" :key="message._id"  @delete="this.delete" :message="message"></messageProfile>
+            <messageProfile
+             v-for="message in messages"
+              @reply="openReplies"
+              :key="message._id"
+              @delete="this.delete"
+              :message="message"
+              :allowReplying= "allowReplying"></messageProfile>
 
         </div>
     </div>
@@ -34,13 +40,14 @@ export default {
         },
         allowReplying: {
             type: Boolean,
-            default: true
+            required: false,
+            default: true,
         }
     },
 
     methods: {
         openReplies(e) {
-            this.$router.push('/replies?message=' + e)
+            this.$router.push('/zenox/replies?message=' + e)
         },
 
         delete(e) {
