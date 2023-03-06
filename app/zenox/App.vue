@@ -18,7 +18,6 @@
   <div class="pl-[27px] md:pl-[120px]">
     <div class="w-full bg-white h-[30px] text-[12px] pt-1  text-sm font-semibold text-start">
       <div class="flex justify-start items-start content-start">
-
         <p class="absolute left-7 md:left-[125px] ">WELCOME TO ZENOX</p>
       </div>
     </div>

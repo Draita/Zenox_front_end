@@ -225,8 +225,7 @@ export default {
             console.log(this.email)
         },
         rediretToProfile(name) {
-            this.$router.push('/profile?user=' + name)
-
+            this.$router.push('/zenox/profile/' + name)
         }
     },
 }
