@@ -17,11 +17,19 @@
         </button>
         <h2 class="text-lg font-semibold mb-4">Replies</h2>
       </div>
+      <div class="width-formatting">
+        <message-profile  v-if="!loading" :hideBottom=true
+          :message=this.message></message-profile>
+
+      </div>
 
       <message-box @messageSend="sendReply" class="width-formatting " :header="this.messageBoxHeader"></message-box>
 
       <!-- TODO: disable in back-end so you can't reply again-->
-      <messages-list class="width-formatting" :allowReplying=false :messages="messages"></messages-list>
+
+      <messages-list class="width-formatting" :allowReplying=false :messages=this.replies></messages-list>
+
+
 
 
 
@@ -38,6 +46,8 @@
 import MainSidebar from "@/zenox/components/mainSidebar.vue";
 import MessageBox from "@/zenox/components/messageBox.vue";
 import messagesList from "@/zenox/components/messagesList.vue";
+import messageProfile from "@/zenox/components/messageProfile.vue";
+
 
 import axios from "axios";
 
@@ -48,12 +58,15 @@ export default {
   components: {
     MainSidebar,
     MessageBox,
-    messagesList
+    messagesList,
+    messageProfile,
   },
   data() {
     return {
-      messages: [],
-      messageId: this.$route.query.message
+      replies: [],
+      messageId: this.$route.query.message,
+      message: undefined,
+      loading: true,
 
     };
   },
@@ -79,12 +92,18 @@ export default {
       console.log(this.message._id);
       this.$emit("close");
     },
+
     updateMessages() {
       const message = this.$route.query.message
       axios
         .get('/messages/replies/' + message)
         .then((response) => {
-          this.messages = response.data;
+          console.log(response.data.replies)
+          this.message = response.data
+          console.log(this.message.likes)
+          this.loading = false;
+
+          this.replies = response.data.replies;
         })
         .catch((error) => {
           console.log(error);
