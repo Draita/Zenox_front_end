@@ -1,31 +1,25 @@
 <template>
+  <div class="container-fluid  text-white">
+    <div class=" flex flex-col w-full md:justify-center md:flex-row  ">
+      <div class="profile flex width-formatting flex-col items-center">
+        <div class="flex flex-col flex-1 ">
+          <h2 class="text-lg font-semibold mb-4 pl-[20px]">
+            Discover posts from other users
+          </h2>
+          <div class="flex items-center ">
+            <input type="text" id="search" label="Search" v-model="search"
+              class="border-white border-[0px] text-[12px]   background-text-box bg-black   rounded-none placeholder-white
+            no-outline focus:ring-0 focus:border-transparent
+            w-full inner-border-[1px] " placeholder="filter by text or and filter or/and by @<username> "
+              data-toggle="tooltip" title="To filter by username use '@<username>'" />
 
-    <div class="container-fluid flex flex-row items-center text-white">
-      <div class=" flex flex-col w-full md:justify-center md:flex-row h-screen flex-1 overflow-scroll">
-        <div class="profile flex md:w-[600px] flex-col items-center">
-          <div class="flex flex-col flex-1 mx-4 md:mx-16">
-            <h2 class="text-lg font-semibold mb-4">
-              Discover posts from other users
-            </h2>
-            <div class="flex items-center mb-4">
-              <label for="search" class="mr-2">Filter by text:</label>
-              <input
-                type="text"
-                id="search"
-                label="Search"
-                v-model="search"
-                class="border border-gray-300 rounded-lg p-2 w-64"
-                placeholder="Enter search text"
-                data-toggle="tooltip"
-                title="To filter by username use '@<username>'"
-              />
-            </div>
-            <messages-List class = "border-t-[1px] border-white" :messages="messages" />
           </div>
+          <messages-List class="border-t-[1px] mt-[-1px] border-white" :messages="messages" />
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
 
 <script>
 
@@ -66,22 +60,21 @@ export default {
   },
   methods: {
     filter(data) {
-      console.log();
+
 
       const str = data.query;
       const regex = /(@\w+)/; // matches any word character (\w) after the @ symbol
       const match = str.match(regex);
       var username = match ? match[0].substring(1) : "";
       const message = match ? str.replace(match[0], "").trim() : str.trim();
-      console.log("Username:", username); // "bob"
-      console.log("Message:", message); // "hello I am here"
+
 
       axios.post("/messages/discover", {
         username,
         filter: message
       }).then((response) => {
         this.messages = response.data;
-    });
+      });
     },
   },
 };
