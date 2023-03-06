@@ -11,7 +11,7 @@ import Zenox from './zenox/App.vue';
 // Create parent Vue app
 const app = createApp(App);
 // Register router
-app.use(router);
+app.use(router)
 
 // Register child components
 app.component('LandingPage', LandingPage);
