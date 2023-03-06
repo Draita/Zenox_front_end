@@ -59,7 +59,7 @@
                                 <div
                                     class="w-[510px] background-bio    h-full  z-10 border-black border-t-[1px] border-r-[1px] border-l-[1px] ">
                                     <p class="text-start pl-[11px] h-full text-[12px] pt-[6px] pr-[6px]  overflow-hidden ">
-                                        HI
+
                                         {{ user.description }}</p>
                                 </div>
                             </div>
