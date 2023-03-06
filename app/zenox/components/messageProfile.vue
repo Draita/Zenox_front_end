@@ -1,5 +1,5 @@
 <template>
-    <div  :class="{ 'hidden': !showMenuModal, 'fixed': showMenuModal }" @click="this.showMenuModal = false" class="fixed  top-0 right-0  z-40 modal-backdrop w-full h-screen">
+    <div  :class="{ 'hidden': !showMenuModal, 'fixed': showMenuModal }" @click="this.showMenuModal = false" class="fixed  top-0 right-0  z-40 modal-backdrop w-full h-screen ">
     </div>
     <div class="message pt-[5px] pl-[5px] border-b-[1px] border-l-[1px] border-r-[1px] border-white h-fit flex relative">
         <img class="h-[58px] w-[58px] rounded-full border-white  invert-0 hover:invert transition hover:opacity-50 duration-300 ease-in-out"
@@ -28,7 +28,7 @@
             </div>
 
 
-            <div class="bottom flex items-center font-light pt-[4px] ">
+            <div v-show = "!hideBottom" class="bottom flex items-center font-light pt-[4px] ">
 
                 <button @click="toggleLike" class="flex items-center  hover:opacity-70 w-[86px] h-[23px] ">
                     <div v-if="!this.liked" class="w-[24px] animate-spin">
@@ -48,7 +48,7 @@
 
                 </button>
 
-                <button class="flex items-center    hover:opacity-70   w-[86px]"
+                <button v-show = "allowReplying" class="flex items-center    hover:opacity-70   w-[86px]"
                     @click="this.$emit('reply', this.message._id)">
                     <img class="w-[24px]  align-middle" src="@/assets/icons/react.svg">
 
@@ -75,6 +75,7 @@ export default {
             showMenu: false,
             reactionCount: this.message.replies.length,
 
+
         }
 
     },
@@ -83,11 +84,19 @@ export default {
         message: {
             type: Object,
             required: true,
-
-
+        },
+        allowReplying: {
+            type: Boolean,
+            required: true,
+        },
+        hideBottom:{
+            type: Boolean,
+            default: false,
+            required: false,
         }
     },
     created() {
+
         this.profilePicture = config.apiUrl + '/profile/profile_picture/' + this.message.user.username
         this.media = config.apiUrl + '/media/' + this.message.media
         if (this.message.postedSelf){
@@ -108,7 +117,7 @@ export default {
     },
 
     visitProfile() {
-        this.$router.push('/profile?user=' + this.message.user.username)
+        this.$router.push('/zenox/profile/' +  this.message.user.username)
     },
     getTimeElapsed(timestamp) {
         const now = new Date();
