@@ -6,14 +6,14 @@
 
     <img @click="$router.push('/')" class=" w-[28px] mt-[4px] pl-[2px] md:pl-[5px]  pb-[19px]  align-middle" src="@/assets/icons/star.svg">
 
-    <a @click="$router.push('/feed')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
+    <a @click="$router.push('/zenox/feed')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
                          w-full pl-[2px] md:pl-[5px] pt-[19px] pb-[19px]">
       <img class="w-[24px]  align-middle" src="@/assets/icons/home.svg">
 
       <span class="ml-3 text">HOME</span>
     </a>
 
-    <a @click="$router.push('/discover')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
+    <a @click="$router.push('/zenox/discover')" class="bg-white hover:bg-black hover:text-white flex items-center text-base font-normal text-gray-900
                      w-full pl-[2px] md:pl-[5px] pt-[19px] pb-[19px] ">
       <img class="w-[24px]  align-middle " src="@/assets/icons/discover.svg">
 
@@ -47,23 +47,20 @@
 
 <script>
 import axios from "axios";
+// import routerUtils from '@/routerUtils.js'
 
 export default {
   name: "Sidebar",
+
   methods: {
     profilePage() {
+
 
       axios.get('/checklogin')
         .then((response) => {
 
           if (response.status == 200) {
-            this.$router.push('/profile?user=' + response.data).then(() => {
-              console.log('Updated route', this.$route)
-              this.$emit('refreshProfile')
-            })
-
-
-
+            this.$router.push('/zenox/profile/' + response.data)
           }
         })
     },
