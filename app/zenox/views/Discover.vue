@@ -43,6 +43,8 @@ export default {
     };
   },
   mounted() {
+    document.documentElement.style.overflow = 'auto'
+
     axios.post("/messages/discover", {}).then((response) => {
       this.messages = response.data;
     });

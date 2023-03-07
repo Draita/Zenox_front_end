@@ -41,6 +41,8 @@ export default {
         };
     },
     mounted() {
+        document.documentElement.style.overflow = 'auto'
+
         axios
             .get('/messages/feed')
             .then((response) => {
